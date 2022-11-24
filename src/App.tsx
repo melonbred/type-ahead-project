@@ -23,7 +23,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [buttonPressed, setButtonPressed] = useState(false);
 
-  const [selectedModifier, setSelectedModifier] = useState(modifier[1]);
+  const [selectedModifier, setSelectedModifier] = useState({
+    id: 0,
+    name: "Select Option",
+    code: "default",
+  });
   console.log(selectedModifier);
   const code = selectedModifier.code;
   console.log(`the mod code is ${code}`);
@@ -80,7 +84,7 @@ function App() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
                     {modifier.map((modifier, modifierIdx) => (
                       <Listbox.Option
                         key={modifierIdx}
@@ -103,7 +107,7 @@ function App() {
                               {modifier.name}
                             </span>
                             {selected ? (
-                              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-green-300">
                                 <CheckIcon
                                   className="h-5 w-5"
                                   aria-hidden="true"
@@ -149,7 +153,7 @@ function App() {
                   {data.map((synonym) => {
                     return (
                       <li
-                        key={synonym.score}
+                        key={synonym.word}
                         onClick={() => onListClick(synonym.word)}
                       >
                         {" "}
