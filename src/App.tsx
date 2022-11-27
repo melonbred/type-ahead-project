@@ -127,6 +127,7 @@ function App() {
             <input
               className="rounded-lg text-center"
               value={word}
+              placeholder="Enter Word Here"
               type="text"
               onChange={(e) => setWord(e.target.value)}
             ></input>
@@ -144,8 +145,8 @@ function App() {
           ) : (
             <>
               {buttonPressed && (
-                <div className="border-b-2 border-gray-300 flex justify-center sticky">
-                  <p className="text-gray-300">Results:</p>
+                <div className="border-b-2 border-gray-300 flex justify-center">
+                  <p className="text-gray-300 font-bold">Results:</p>
                 </div>
               )}
               <div className="overflow-y-auto flex justify-center">
