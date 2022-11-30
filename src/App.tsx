@@ -39,7 +39,7 @@ function App() {
     e.preventDefault();
     setIsLoading(true);
     const resData = await fetch(
-      `https://api.datamuse.com/words?rel_${code}=${word}`
+      `https://api.datamuse.com/words?rel_${selectedModifier.code}=${word}`
     );
     const synData = (await resData.json()) as SynonymData[];
     setIsLoading(false);
@@ -52,7 +52,7 @@ function App() {
     setWord(listWord);
     setIsLoading(true);
     const resData = await fetch(
-      `https://api.datamuse.com/words?rel_${code}=${word}`
+      `https://api.datamuse.com/words?rel_${selectedModifier.code}=${listWord}`
     );
     const synData = (await resData.json()) as SynonymData[];
     setIsLoading(false);
@@ -151,14 +151,14 @@ function App() {
               )}
               <div className="overflow-y-auto flex justify-center">
                 <ul className="list-disc text-gray-300">
-                  {data.map((synonym) => {
+                  {data.map((list) => {
                     return (
                       <li
-                        key={synonym.word}
-                        onClick={() => onListClick(synonym.word)}
+                        key={list.word}
+                        onClick={() => onListClick(list.word)}
                       >
                         {" "}
-                        {synonym.word}{" "}
+                        {list.word}{" "}
                       </li>
                     );
                   })}
